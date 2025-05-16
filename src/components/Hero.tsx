@@ -8,11 +8,11 @@ const Hero = () => {
     <section className="relative pt-36 pb-0">
       {/* Background image with integrated gradient */}
       <div className="absolute inset-0 h-[300%] z-0">
-        <div className="absolute top-[-400px] left-0 w-full h-full">
+        <div className="absolute top-[-500px] left-0 w-full h-full">
           <img 
             src="https://images.pexels.com/photos/458766/pexels-photo-458766.jpeg" 
             alt="Elegant woman wearing jewelry"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-[0.89]"
           />
           {/* 优化的多点渐变 */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/35 via-black/30 via-black/20 via-black/10 to-transparent"></div>
