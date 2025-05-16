@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { products } from '../data/products';
 
+type ElementType = 'wood' | 'fire' | 'earth' | 'metal' | 'water';
+
 const Products = () => {
   const { t } = useLanguage();
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState<'all' | ElementType>('all');
   
   const filteredProducts = filter === 'all' 
     ? products 
     : products.filter(product => product.element.toLowerCase() === filter);
 
-  const elementClasses = {
+  const elementClasses: Record<ElementType, string> = {
     wood: 'bg-green-100 text-green-800',
     fire: 'bg-red-100 text-red-800',
     earth: 'bg-amber-100 text-amber-800',
@@ -19,18 +21,17 @@ const Products = () => {
   };
 
   return (
-    <section id="products" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">{t('products.title')}</h2>
-          <p className="text-lg text-gray-600 mb-8">{t('products.subtitle')}</p>
-          
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+    <section id="products" className="pt-8 pb-20 bg-white relative">
+      <div className="absolute top-0 left-0 w-full h-24 bg-white z-10"></div>
+      
+      <div className="container mx-auto px-4 relative z-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="flex flex-wrap justify-center gap-2 mb-10 pt-6">
             <button 
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'all' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
               }`}
             >
@@ -38,9 +39,9 @@ const Products = () => {
             </button>
             <button 
               onClick={() => setFilter('wood')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'wood' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-green-100 text-green-800 hover:bg-green-200'
               }`}
             >
@@ -48,9 +49,9 @@ const Products = () => {
             </button>
             <button 
               onClick={() => setFilter('fire')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'fire' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-red-100 text-red-800 hover:bg-red-200'
               }`}
             >
@@ -58,9 +59,9 @@ const Products = () => {
             </button>
             <button 
               onClick={() => setFilter('earth')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'earth' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
               }`}
             >
@@ -68,9 +69,9 @@ const Products = () => {
             </button>
             <button 
               onClick={() => setFilter('metal')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'metal' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
               }`}
             >
@@ -78,15 +79,18 @@ const Products = () => {
             </button>
             <button 
               onClick={() => setFilter('water')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors shadow-sm ${
                 filter === 'water' 
-                  ? 'bg-imperial-400 text-black' 
+                  ? 'bg-amber-500 text-white' 
                   : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
               }`}
             >
               {t('products.filter.water')}
             </button>
           </div>
+          
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">{t('products.title')}</h2>
+          <p className="text-lg text-gray-600 mb-8">{t('products.subtitle')}</p>
         </div>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -98,7 +102,7 @@ const Products = () => {
                   alt={product.name} 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${elementClasses[product.element.toLowerCase()]}`}>
+                <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${elementClasses[product.element.toLowerCase() as ElementType]}`}>
                   {product.element}
                 </span>
               </div>
@@ -115,7 +119,7 @@ const Products = () => {
                   
                   <div className="text-right">
                     <p className="text-xs text-gray-500 mb-1">Price</p>
-                    <p className="text-lg font-bold text-imperial-600">${product.price}</p>
+                    <p className="text-lg font-bold text-amber-600">${product.price}</p>
                   </div>
                 </div>
               </div>

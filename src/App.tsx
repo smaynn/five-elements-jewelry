@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Calculator from './components/Calculator';
@@ -17,8 +17,8 @@ function App() {
         <main>
           <Hero />
           <Calculator />
-          <Features />
           <Products />
+          <Features />
           <Testimonials />
           <FAQ />
         </main>

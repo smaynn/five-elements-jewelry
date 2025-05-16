@@ -3,15 +3,24 @@ import { useLanguage } from '../context/LanguageContext';
 import { calculateDestiny } from '../utils/calculationUtils';
 import CalculatorResults from './CalculatorResults';
 
+interface CalculationResult {
+  rating: string;
+  score: number;
+  favorable: string[];
+  unfavorable: string[];
+  recommendation: string;
+  explanation: string;
+}
+
 const Calculator = () => {
   const { t } = useLanguage();
   const [name, setName] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [birthTime, setBirthTime] = useState('');
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<CalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsCalculating(true);
     
@@ -23,17 +32,17 @@ const Calculator = () => {
   };
 
   return (
-    <section id="calculator" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">{t('calculator.title')}</h2>
-          <p className="text-lg text-gray-600">{t('calculator.subtitle')}</p>
+    <section id="calculator" className="relative pt-8 pb-24 bg-transparent z-10">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-5 pt-[400px]">
+          <h2 className="text-3xl font-bold mb-3 text-gray-800">{t('calculator.title')}</h2>
+          <p className="text-lg text-white-600">{t('calculator.subtitle')}</p>
         </div>
         
         {!results ? (
-          <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="p-8 md:p-12">
-              <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="max-w-md mx-auto bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-amber-400/20">
+            <div className="p-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     {t('calculator.name')}
@@ -45,7 +54,7 @@ const Calculator = () => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t('calculator.placeholder.name')}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-imperial-400 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg border border-amber-400/50 bg-white text-gray-800 focus:ring-2 focus:ring-amber-400 focus:border-transparent"
                   />
                 </div>
                 
@@ -59,7 +68,7 @@ const Calculator = () => {
                     value={birthDate}
                     onChange={(e) => setBirthDate(e.target.value)}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-imperial-400 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg border border-amber-400/50 bg-white text-gray-800 focus:ring-2 focus:ring-amber-400 focus:border-transparent"
                   />
                 </div>
                 
@@ -73,17 +82,17 @@ const Calculator = () => {
                     value={birthTime}
                     onChange={(e) => setBirthTime(e.target.value)}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-imperial-400 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg border border-amber-400/50 bg-white text-gray-800 focus:ring-2 focus:ring-amber-400 focus:border-transparent"
                   />
                 </div>
                 
                 <button
                   type="submit"
                   disabled={isCalculating}
-                  className={`w-full py-4 px-6 rounded-lg text-black font-medium focus:outline-none focus:ring-4 focus:ring-imperial-300 ${
+                  className={`w-full py-3 px-4 rounded-lg text-black font-medium focus:outline-none focus:ring-4 focus:ring-amber-300 ${
                     isCalculating 
-                      ? 'bg-imperial-200 cursor-not-allowed' 
-                      : 'bg-gradient-to-r from-imperial-400 to-imperial-500 hover:from-imperial-500 hover:to-imperial-600 transition-colors'
+                      ? 'bg-amber-200 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 transition-colors'
                   }`}
                 >
                   {isCalculating ? (
@@ -105,6 +114,9 @@ const Calculator = () => {
           <CalculatorResults results={results} />
         )}
       </div>
+      
+      {/* 底部渐变，确保与calculator底部对齐，范围扩大一倍 */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1000px] bg-gradient-to-b from-transparent via-white/50 via-white/90 to-white pointer-events-none"></div>
     </section>
   );
 };
