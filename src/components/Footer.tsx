@@ -78,10 +78,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <p className="text-gray-400 mb-2">
-              {t('footer.contact')} contact@five-elements.com
+              {t('footer.contact')} mayin711@gmail.com
             </p>
             <a 
-              href="mailto:contact@five-elements.com"
+              href="mailto:mayin711@gmail.com"
               className="inline-block px-4 py-2 bg-imperial-400 hover:bg-imperial-500 text-black rounded-lg transition-colors"
             >
               Send Email
