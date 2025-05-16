@@ -22,7 +22,7 @@ export const products = [
     name: "Ruby Passion Necklace",
     description: "Vibrant ruby pendant that stimulates energy, courage, and passion.",
     price: 219.99,
-    image: "https://images.pexels.com/photos/1427787/pexels-photo-1427787.jpeg",
+    image: "https://images.unsplash.com/photo-1620656706335-637996aa1247?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     element: "Fire",
     material: "Ruby, Gold Plated"
   },
@@ -31,7 +31,7 @@ export const products = [
     name: "Carnelian Flame Earrings",
     description: "Beautiful carnelian earrings that enhance creativity and courage.",
     price: 89.99,
-    image: "https://images.pexels.com/photos/248077/pexels-photo-248077.jpeg",
+    image: "https://plus.unsplash.com/premium_photo-1681276168422-ebd2d7e95340?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     element: "Fire",
     material: "Carnelian, Gold"
   },
@@ -40,7 +40,7 @@ export const products = [
     name: "Citrine Abundance Ring",
     description: "Citrine stone ring designed to attract wealth and stability.",
     price: 149.99,
-    image: "https://images.pexels.com/photos/371069/pexels-photo-371069.jpeg",
+    image: "https://images.unsplash.com/photo-1631832721838-44118cd1fad8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     element: "Earth",
     material: "Citrine, Gold"
   },
@@ -67,7 +67,7 @@ export const products = [
     name: "White Gold Precision Ring",
     description: "Elegant white gold ring that enhances precision and clarity.",
     price: 259.99,
-    image: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg",
+    image: "https://images.unsplash.com/photo-1732018541416-419ddb647ba2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     element: "Metal",
     material: "White Gold, Diamond"
   },

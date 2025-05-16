@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Scroll } from 'lucide-react';
 
 const Header = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -12,13 +11,15 @@ const Header = () => {
   return (
     <header className="sticky top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 bg-imperial-400 rounded-lg flex items-center justify-center transform -rotate-6 transition-transform group-hover:rotate-0">
-            <Scroll className="h-6 w-6 text-black/80" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold text-black">Five Elements</span>
-            <span className="text-xs text-imperial-600">五行相生</span>
+        <a href="/" className="flex items-center group">
+          <img 
+            src="/images/logo/jimeng-2025-05-16-344.png" 
+            alt="Logo" 
+            className="w-10 h-10 rounded-lg transition-transform transform group-hover:scale-110"
+          />
+          <div className="flex flex-col ml-2">
+            <span className="text-xl font-bold text-black">Five Elements Jewelry</span>
+            <span className="text-xs text-imperial-600">五行首饰</span>
           </div>
         </a>
         
